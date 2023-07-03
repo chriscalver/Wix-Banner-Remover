@@ -7,15 +7,12 @@
       var data = new Blob([text], {
         type: 'text/plain'
       });
-
       // If we are replacing a previously generated file we need to
       // manually revoke the object URL to avoid memory leaks.
       if (textFile !== null) {
         window.URL.revokeObjectURL(textFile);
       }
-
       textFile = window.URL.createObjectURL(data);
-
       return textFile;
     };
 
@@ -30,17 +27,14 @@
   }, false);
 })();
 
+      let originalFile = "OG";
 
-
-let originalFile = "OG";
-
-document.getElementById('inputfile')
+      document.getElementById('inputfile')
         .addEventListener('change', function() {
         var fr=new FileReader();
 
         fr.onload=function(){
             //document.getElementById('output').textContent=fr.result;
-
 
 			originalFile = fr.result;			
 			let index = originalFile.search('<div id="SITE_CONTAINER">');
@@ -51,17 +45,10 @@ document.getElementById('inputfile')
 			let newFile = firstHalf + secondHalf;
 			//document.getElementById("box1").innerHTML = index; 
 			//document.getElementById('box1').textContent = index.toString();
-
 			//document.getElementById('box2').textContent = firstHalf;
 			//document.getElementById('box2').textContent = secondHalf;
 			document.getElementById('textbox').textContent = newFile;
-
-
-
-
         }
         fr.readAsText(this.files[0]);
-
         })
-
-//document.getElementById('box1').innerHTML = "hello";
+      //document.getElementById('box1').innerHTML = "hello";
